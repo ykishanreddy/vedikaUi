@@ -40,8 +40,8 @@ export class PublishlistingComponent implements OnInit {
     data.accountDetails=sessionStorage.getItem("OwnerAccountdetails");
     console.log("from session");
     var myobj:any = {
-      "ownerId":16,
-      "correlationid":165,
+      "ownerId":139,
+      "corelationId":123,
       "location":JSON.parse(localStorage.getItem("OwnerLocation")),
       "details":JSON.parse(localStorage.getItem("OwnerDetails")),
       "accountDetails":JSON.parse(sessionStorage.getItem("OwnerAccountdetails"))

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { accountDetailsService } from 'src/app/OwnerModule/services/accountDetails.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-// import { accountDetailsModel } from 'src/app/OwnerModule/models/accountDetails.model';
+import { accountDetailsModel } from 'src/app/OwnerModule/models/accountDetails.model';
 import { SessionStorageService } from 'src/app/OwnerModule/services/sessionstorage.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class AccountdetailsComponent implements OnInit {
 
   AccountdetailsForm:FormGroup ;
   OwnerAccountdetails :any;
-  // accountDetailsModel = [];
+  accountDetailsModel = [];
 
 
   bankInfo = [];

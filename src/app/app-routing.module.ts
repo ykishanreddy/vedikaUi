@@ -25,25 +25,28 @@ import { BookingsComponent } from './OwnerModule/components/bookings/bookings.co
 import { ProfileComponent } from './OwnerModule/components/profile/profile.component';
 import { CalendarComponent } from './OwnerModule/components/calendar/calendar.component';
 import { SettingsComponent } from './OwnerModule/components/settings/settings.component';
+import { OwnerLoginComponent } from './OwnerModule/components/owner-login/owner-login.component';
+import { OwnerRegisterComponent } from './OwnerModule/components/owner-register/owner-register.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/header', pathMatch: 'full' },
   { path: 'header', component: HeaderComponent },
-  { path: 'login', component: LoginComponent },
+  
+  { path: 'owner-login', component: OwnerLoginComponent },
   { path: 'owner-dashboard', component: OwnerDasboardComponent },
   { path: 'myhalls', component: MyhallsComponent },
   { path: 'bookings', component: BookingsComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'owner-register', component: OwnerRegisterComponent },
   { path: 'help', component: HelpComponent },
   { path: 'searchbar', component: SearchbarComponent },
   { path: 'functionhall', component: FunctionhallComponent },
   { path: 'functionhallpage/:id', component: FunctionhallpageComponent },
-  { path: 'paygate', component: PaygateComponent },
-
+  { path: 'paygate/:id', component: PaygateComponent },
+  
   { path: 'login1', component: Login1Component },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'location', component: LocationComponent },

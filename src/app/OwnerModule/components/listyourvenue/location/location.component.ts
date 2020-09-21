@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'; 
 import { LocationService } from 'src/app/OwnerModule/services/location.service';
-// import { SessionStorageService } from 'src/app/OwnerModule/services/sessionstorage.service';
+import { SessionStorageService } from 'src/app/OwnerModule/services/sessionstorage.service';
 import { LocationModel } from 'src/app/OwnerModule/models/location.model';
 import { LocalStorageService } from 'src/app/OwnerModule/services/localstorage.service';
 
@@ -23,7 +23,7 @@ export class LocationComponent implements OnInit {
   countryInfo=[];
   stateInfo=[];
   cityInfo=[];
-  // locationmodel: LocationModel[] = [];
+  locationmodel: LocationModel[] = [];
 
   constructor(
     private router: Router,
@@ -37,14 +37,22 @@ export class LocationComponent implements OnInit {
 
     this.OwnerLocation = JSON.parse(window.localStorage.getItem('OwnerLocation'));
     this.LocationForm = this._fb.group({
-      country: new FormControl(this.OwnerLocation?this.OwnerLocation.country:'', ),
+      name: new FormControl(this.OwnerLocation ? this.OwnerLocation.name : '',),
       state: new FormControl(this.OwnerLocation?this.OwnerLocation.state:'', ),
       city: new FormControl(this.OwnerLocation?this.OwnerLocation.city:'', ),
       streetAddress: new FormControl(this.OwnerLocation?this.OwnerLocation.streetAddress:'', Validators.required),
-      postalCode: new FormControl(this.OwnerLocation?this.OwnerLocation.postalCode:'', Validators.required),
+      zipcode: new FormControl(this.OwnerLocation ? this.OwnerLocation.zipcode:'', Validators.required),
       
     });
     
+  }
+  getCountry(name) {
+    console.log(name)
+    this.location.getCountry(name).subscribe(data => {
+      console.log(data.data[0].countryDetails.name);
+      this.countryInfo = data.data[0].countryDetails.name;
+      console.log(this.countryInfo)
+    })
   }
 
   getStates(value){
@@ -70,11 +78,11 @@ export class LocationComponent implements OnInit {
 
   onclick() {
     this.OwnerLocation = {
-      country: this.LocationForm.get('country').value,
+      country: this.LocationForm.get('name').value,
       state: this.LocationForm.get('state').value,
       city: this.LocationForm.get('city').value,
       streetAddress: this.LocationForm.get('streetAddress').value,
-      postalCode: this.LocationForm.get('postalCode').value,
+      zipcode: this.LocationForm.get('zipcode').value,
 
     }
   //   this.location.addLocation(this.OwnerLocation).subscribe(
